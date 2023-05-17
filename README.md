@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type    | Options                 |
-| ------------------ | ------- | ----------------------- |
-| email              | string  | null: false, unique_key |
-| encrypted_password | string  | null: false             |
-| nickname           | string  | null: false             |
-| name               | string  | null: false             |
-| sei                | string  | null: false             |
-| kana_name          | string  | null: false             |
-| kana_sei           | string  | null: false             |
-| birth              | date    | null: false             |
+| Column             | Type    | Options                       |
+| ------------------ | ------- | ----------------------------- |
+| email              | string  | null: false, unique: true     |
+| encrypted_password | string  | null: false                   |
+| nickname           | string  | null: false                   |
+| name               | string  | null: false                   |
+| sei                | string  | null: false                   |
+| kana_name          | string  | null: false                   |
+| kana_sei           | string  | null: false                   |
+| birth              | date    | null: false                   |
 
 ### Association
 has_many :items
@@ -33,13 +33,8 @@ has_many :orders
 | user               | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :users
+belongs_to :user
 has_one :order
-belongs_to :category
-belongs_to :condition
-belongs_to :delivery_charge_id
-belongs_to :delivery_day_id
-belongs_to :prefecture_id
 
 
 ## orders テーブル
@@ -65,8 +60,7 @@ has_one :address
 | address            | string     | null: false                    |
 | building_name      | string     |                                |
 | tel                | string     | null: false                    |
-| item               | references | null: false, foreign_key: true |
+| order              | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :order
-belongs_to :prefecture_id
