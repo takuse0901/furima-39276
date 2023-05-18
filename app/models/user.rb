@@ -5,11 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :name, presence: true
-  validates :sei, presence: true
-  validates :kana_name, presence: true
-  validates :kana_sei, presence: true
+  validates_format_of :name, with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, presence: true
+  validates_format_of :sei, with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, presence: true
+  validates_format_of :kana_name, with: /\A[ァ-ヶー－ー]+\z/, presence: true
+  validates_format_of :kana_sei, with: /\A[ァ-ヶー－ー]+\z/, presence: true
   validates :birth, presence: true
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers' }
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 end
