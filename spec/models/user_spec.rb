@@ -30,17 +30,17 @@ RSpec.describe User, type: :model do
       it '英字のみのpasswordは登録できない' do
         @user.password = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it '数字のみのpasswordは登録できない' do
         @user.password = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it '全角文字のあるpasswordは登録できない' do
         @user.password = 'aaaa１２'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'passwordとpassword_confirmationが不一致では登録できない' do
         @user.password = '123456'
@@ -69,42 +69,42 @@ RSpec.describe User, type: :model do
       it 'nameが空では登録できない' do
         @user.name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name is invalid")
+        expect(@user.errors.full_messages).to include('Name is invalid')
       end
       it '半角文字が含まれているとnameは登録できない' do
         @user.name = 'aaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include ('Name is invalid')
+        expect(@user.errors.full_messages).to include('Name is invalid')
       end
       it 'seiが空では登録できない' do
         @user.sei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Sei is invalid")
+        expect(@user.errors.full_messages).to include('Sei is invalid')
       end
       it '半角文字が含まれているとseiは登録できない' do
         @user.sei = 'bbbb'
         @user.valid?
-        expect(@user.errors.full_messages).to include ('Sei is invalid')
+        expect(@user.errors.full_messages).to include('Sei is invalid')
       end
       it 'kana_nameが空では登録できない' do
         @user.kana_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana name is invalid")
+        expect(@user.errors.full_messages).to include('Kana name is invalid')
       end
       it 'カタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれているとkana_nameが登録できない' do
         @user.kana_name = 'test/'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana name is invalid")
+        expect(@user.errors.full_messages).to include('Kana name is invalid')
       end
       it 'kana_seiが空では登録できない' do
         @user.kana_sei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana sei is invalid")
+        expect(@user.errors.full_messages).to include('Kana sei is invalid')
       end
       it 'カタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれているとkana_seiが登録できない' do
         @user.kana_sei = 'test/'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana sei is invalid")
+        expect(@user.errors.full_messages).to include('Kana sei is invalid')
       end
       it 'birthが空では登録できない' do
         @user.birth = ''
