@@ -60,22 +60,22 @@ RSpec.describe Item, type: :model do
       it 'priceは半角数値のみ保存可能であること' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is not a number'
+        expect(@item.errors.full_messages).to include ('Price is not a number')
       end
       it 'priceは小数点を含む数値では保存できない' do
         @item.price = 555.5
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price must be an integer'
+        expect(@item.errors.full_messages).to include ('Price must be an integer')
       end
       it 'priceが300円以下では保存できない' do
         @item.price = 111
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price must be greater than or equal to 300'
+        expect(@item.errors.full_messages).to include ('Price must be greater than or equal to 300')
       end
       it 'priceが9999999円以上では保存できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price must be less than or equal to 9999999'
+        expect(@item.errors.full_messages).to include ('Price must be less than or equal to 9999999')
       end
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
