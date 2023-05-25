@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :set_item, only: [:index, :create]
+  before_action :move_to_top, only: [:index, :create]
 
   def index
     @order_address = OrderAddress.new
   end
 
   def create
-    binding.pry
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -35,6 +35,12 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_top
+    return unless @item.user_id == current_user.id || @item.order.present?
+
+    redirect_to root_path
   end
 
 end
