@@ -5,7 +5,7 @@ class OrderAddress
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'は-を含めてください' }
+    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :city
     validates :address
     validates :tel, format: { with: /\A\d{10,11}\z/ }
