@@ -66,6 +66,7 @@ group :development do
 end
 group :production do
   gem 'unicorn', '5.4.1'
+  gem 'date', '~> 3.3', '>= 3.3.3'
 end
 gem 'devise'
 gem 'pry-rails'
@@ -75,4 +76,3 @@ gem 'active_hash'
 gem 'payjp'
 gem 'rails-i18n'
 gem "aws-sdk-s3", require: false
-gem 'date', '~> 3.3', '>= 3.3.3'
