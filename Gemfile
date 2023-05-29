@@ -66,7 +66,6 @@ group :development do
 end
 group :production do
   gem 'unicorn', '5.4.1'
-  gem 'date', '~> 3.3', '>= 3.3.3'
 end
 gem 'devise'
 gem 'pry-rails'
